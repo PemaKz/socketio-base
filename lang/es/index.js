@@ -14,4 +14,5 @@ module.exports = {
   'PasswordUpdated': 'Contraseña actualizada',
   'AuthTokenRemoved': 'Token de autenticación removido',
   'MissingAuthToken': 'Falta el token de autenticación',
+  'LogoutSuccess': 'Deslogueado exitosamente',
 }

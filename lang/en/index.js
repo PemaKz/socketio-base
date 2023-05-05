@@ -1,6 +1,6 @@
 module.exports = {
   'AlreadyLogin': 'Already logged in',
-  'MissingUserOrPassword': 'Missing usernamee or password',
+  'MissingUserOrPassword': 'Missing username or password',
   'InvalidUserOrPassword': 'Invalid username or password',
   'UserBanned': 'User is banned',
   'NotLogin': 'Not logged in',
@@ -14,4 +14,5 @@ module.exports = {
   'PasswordUpdated': 'Password updated',
   'AuthTokenRemoved': 'Auth token removed',
   'MissingAuthToken': 'Missing auth token',
+  'LogoutSuccess': 'Logged out successfully',
 }

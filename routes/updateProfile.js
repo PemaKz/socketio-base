@@ -7,5 +7,5 @@ module.exports = async (io, socket, params) => {
   if (email.length > 255) throw new Error( lang(socket, 'EmailTooLong') );
   socket.user.email = email;
   await socket.user.save();
-  io.to(socket.id).emit('updateProfile', { success: true, message: lang(socket, 'ProfileUpdated') });
+  return lang(socket, 'ProfileUpdated')
 };

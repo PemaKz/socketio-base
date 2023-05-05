@@ -8,6 +8,9 @@ const socketOptions = {
   connectionStateRecovery: {
     maxDisconnectionDuration: 2 * 60 * 1000,
     //skipMiddlewares: true,
+  },
+  cors: {
+    origin: "http://localhost:3000"
   }
 };
 const io = new Server(SocketPort, socketOptions);
@@ -34,8 +37,6 @@ io.on("connection", (socket) => {
     console.log("Socket error: " + err);
   });
 });
-
-
 
 console.log("Socket.IO server listening on ws://localhost:" + SocketPort);
 

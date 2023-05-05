@@ -5,5 +5,5 @@ module.exports = async (io, socket, params) => {
   const { authToken } = params;
   if (!authToken) throw new Error( lang(socket, 'MissingAuthToken') );
   await socket.user.removeAuthToken(authToken);
-  io.to(socket.id).emit('myAuthTokens', { success: true, message: lang(socket, 'AuthTokenRemoved') });
+  return lang(socket, 'AuthTokenRemoved')
 };

@@ -7,8 +7,12 @@ module.exports = async (io, socket, params) => {
   if (!username || !password) throw new Error( lang(socket, 'MissingUserOrPassword') );
   const user = await User.findOne({ where: { username } });
   if (user) throw new Error( lang(socket, 'AlreadyRegistered') );
-  const newUser = await User.create({ username, password });
+  let newUser = await User.create({ username, password });
   const token = await newUser.generateAuthToken();
+  newUser.password = undefined;
   socket.user = newUser;
-  io.to(socket.id).emit('register', { success: true, token, user: newUser });
+  return {
+    token, 
+    user: newUser
+  }
 };

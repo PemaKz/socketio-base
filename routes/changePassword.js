@@ -7,5 +7,5 @@ module.exports = async (io, socket, params) => {
   if(!oldPassword) throw new Error( lang(socket, 'MissingOldPassword') );
   if(!newPassword) throw new Error( lang(socket, 'MissingNewPassword') );
   await socket.user.updatePassword(newPassword);
-  io.to(socket.id).emit('changePassword', { success: true, message: lang(socket, 'PasswordUpdated') });
+  return lang(socket, 'PasswordUpdated')
 };
