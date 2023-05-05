@@ -1,0 +1,92 @@
+module.exports = [
+  {
+    id: 1,
+    name: 'Create User',
+    slug: 'create-user',
+    description: 'Create Users',
+  },
+  {
+    id: 2,
+    name: 'Update User',
+    slug: 'update-user',
+    description: 'Update Users',
+  },
+  {
+    id: 3,
+    name: 'Delete User',
+    slug: 'delete-user',
+    description: 'Delete Users',
+  },
+  {
+    id: 4,
+    name: 'Create Role',
+    slug: 'create-role',
+    description: 'Create Roles',
+  },
+  {
+    id: 5,
+    name: 'Update Role',
+    slug: 'update-role',
+    description: 'Update Roles',
+  },
+  {
+    id: 6,
+    name: 'Delete Role',
+    slug: 'delete-role',
+    description: 'Delete Roles',
+  },
+  {
+    id: 7,
+    name: 'Create Permission',
+    slug: 'create-permission',
+    description: 'Create Permissions',
+  },
+  {
+    id: 8,
+    name: 'Update Permission',
+    slug: 'update-permission',
+    description: 'Update Permissions',
+  },
+  {
+    id: 9,
+    name: 'Delete Permission',
+    slug: 'delete-permission',
+    description: 'Delete Permissions',
+  },
+  {
+    id: 10,
+    name: 'Assign Role To User',
+    slug: 'assign-role-user',
+    description: 'Assign Roles To Users',
+  },
+  {
+    id: 11,
+    name: 'Assign Permission To User',
+    slug: 'assign-permission-user',
+    description: 'Assign Permissions To Users',
+  },
+  {
+    id: 12,
+    name: 'Assign Permission To Role',
+    slug: 'assign-permission-role',
+    description: 'Assign Permissions To Roles',
+  },
+  {
+    id: 13,
+    name: 'Delete Permission From User',
+    slug: 'delete-permission-user',
+    description: 'Delete Permissions From Users',
+  },
+  {
+    id: 14,
+    name: 'Delete Permission From Role',
+    slug: 'delete-permission-role',
+    description: 'Delete Permissions From Roles',
+  },
+  {
+    id: 15,
+    name: 'Delete Role From User',
+    slug: 'delete-role-user',
+    description: 'Delete Roles From Users',
+  },
+]

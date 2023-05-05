@@ -1,0 +1,15 @@
+const lang = require("../lang");
+
+module.exports = async (io, socket, params) => {
+  try{
+    if(!socket.user) throw new Error( lang(socket, 'NotLogin') );
+    const { email} = params;
+    if (!email) throw new Error( lang(socket, 'MissingEmail') );
+    if (email.length > 255) throw new Error( lang(socket, 'EmailTooLong') );
+    socket.user.email = email;
+    await socket.user.save();
+    io.to(socket.id).emit('updateProfile', { success: true, message: lang(socket, 'ProfileUpdated') });
+  } catch (err) {
+    io.to(socket.id).emit('login', { success: false, message: err.message });
+  }
+};

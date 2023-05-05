@@ -1,0 +1,17 @@
+module.exports = {
+  'AlreadyLogin': 'Ya estas logueado',
+  'MissingUserOrPassword': 'Falta el usuario o la contraseña',
+  'InvalidUserOrPassword': 'Usuario o contraseña invalidos',
+  'UserBanned': 'El usuario esta baneado',
+  'NotLogin': 'No estas logueado',
+  'AlreadyRegistered': 'El usuario ya esta registrado',
+  'MissingEmail': 'Falta el email',
+  'EmailTooLong': 'El email es demasiado largo',
+  'ProfileUpdated': 'Perfil actualizado',
+  'InvalidOldPassword': 'Contraseña anterior invalida',
+  'MissingOldPassword': 'Falta la contraseña anterior',
+  'MissingNewPassword': 'Falta la nueva contraseña',
+  'PasswordUpdated': 'Contraseña actualizada',
+  'AuthTokenRemoved': 'Token de autenticación removido',
+  'MissingAuthToken': 'Falta el token de autenticación',
+}
