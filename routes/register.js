@@ -9,10 +9,12 @@ module.exports = async (io, socket, params) => {
   if (user) throw new Error( lang(socket, 'AlreadyRegistered') );
   let newUser = await User.create({ username, password });
   const token = await newUser.generateAuthToken();
-  newUser.password = undefined;
+  delete newUser.dataValues.password;
   socket.user = newUser;
-  return {
-    token, 
-    user: newUser
-  }
+  socket.token = token;
+  socket.emit('user', JSON.stringify({
+    user: newUser,
+    token: token
+  }));
+  return null
 };

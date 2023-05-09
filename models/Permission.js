@@ -12,7 +12,6 @@ module.exports = (sequelize, Sequelize) => {
     slug: {
       type: Sequelize.STRING,
       allowNull: false,
-      unique: true,
     },
     description: {
       type: Sequelize.STRING,
@@ -23,7 +22,13 @@ module.exports = (sequelize, Sequelize) => {
       allowNull: true,
     },
   }, {
-    timestamps: false
+    timestamps: false,
+    indexes: [
+      {
+        unique: true,
+        fields: ['slug']
+      }
+    ]
   });
   return Permission;
 };

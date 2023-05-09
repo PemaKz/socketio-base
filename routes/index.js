@@ -15,10 +15,11 @@ module.exports = async (io, socket, message) => {
     console.log(`Received from ${socket.id} | Action: ${action} | Params: ${params}`);
     if(!siteRoutes[action]) throw new Error('Action not found');
     try{
-      socket.send(JSON.stringify({ 
+      const data = await siteRoutes[action](io, socket, params)
+      if(data) socket.send(JSON.stringify({ 
         success: true,
         action,
-        data: await siteRoutes[action](io, socket, params)
+        data
       }));
     } catch (err) {
       socket.send(JSON.stringify({ 

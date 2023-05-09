@@ -14,10 +14,14 @@ module.exports = async (socket, next) => {
             {
               model: Role,
             }
-          ] 
+          ],
+          attributes: {
+            exclude: ['password'], 
+          },
         });
         if (user){
           socket.user = user;
+          socket.token = token;
           return next();
         }
       }

@@ -11,7 +11,6 @@ module.exports = (sequelize, Sequelize) => {
     username: {
       type: Sequelize.STRING,
       allowNull: false,
-      unique: true
     },
     password: {
       type: Sequelize.TEXT,
@@ -44,6 +43,12 @@ module.exports = (sequelize, Sequelize) => {
     timestamps: true,
     createdAt: 'created_at',
     updatedAt: 'updated_at',
+    indexes: [
+      {
+        unique: true,
+        fields: ['username']
+      }
+    ]
   });
   User.beforeCreate(async (user, options) => {
     try {

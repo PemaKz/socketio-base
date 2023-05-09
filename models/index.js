@@ -31,7 +31,7 @@ db.Permission.belongsToMany(db.User, { through: db.UserPermission, foreignKey: '
 db.Role.belongsToMany(db.Permission, { through: db.RolePermission, foreignKey: 'role_id', otherKey: 'permission_id' });
 db.Permission.belongsToMany(db.Role, { through: db.RolePermission, foreignKey: 'permission_id', otherKey: 'role_id' });
 
-db.Role.hasOne(db.User, { foreignKey: 'role_id' });
-db.User.belongsTo(db.Role, { foreignKey: 'role_id' });
+db.Role.hasOne(db.User, { foreignKey: 'role_id' , sourceKey: 'id' });
+db.User.belongsTo(db.Role, { foreignKey: 'role_id' , targetKey: 'id' });
 
 module.exports = db;
