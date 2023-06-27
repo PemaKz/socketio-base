@@ -7,6 +7,7 @@ require('./models').sequelize.sync().then(async () => {
   await Role.bulkCreate(require('./enums/Roles'), { ignoreDuplicates: true })
   await Permission.bulkCreate(require('./enums/Permissions'), { ignoreDuplicates: true })
   require('./services/SocketIO')
+  require('./services/AuthService')
 }).catch((err) => {
   console.log(err)
 })

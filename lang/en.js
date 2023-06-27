@@ -15,4 +15,6 @@ module.exports = {
   'AuthTokenRemoved': 'Auth token removed',
   'MissingAuthToken': 'Missing auth token',
   'LogoutSuccess': 'Logged out successfully',
+  'UserLoaded': 'User loaded',
+  'SteamApiKeyUpdated': 'Steam API Key updated',
 }

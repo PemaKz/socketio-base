@@ -1,4 +1,4 @@
-const { User, Role } = require('../models');
+const { User, Role, UserNotification, MarketplaceTrade, Marketplace } = require('../models');
 const cache = require('../services/Cache');
 
 module.exports = async (socket, next) => {
@@ -13,6 +13,31 @@ module.exports = async (socket, next) => {
           include: [
             {
               model: Role,
+            },
+            {
+              model: UserNotification,
+            },
+            {
+              model: MarketplaceTrade,
+              include: [
+                {
+                  model: Marketplace,
+                },
+                {
+                  model: User,
+                }
+              ]
+            },
+            {
+              model: Marketplace,
+              include: [
+                {
+                  model: MarketplaceTrade,
+                },
+                {
+                  model: User,
+                }
+              ]
             }
           ],
           attributes: {

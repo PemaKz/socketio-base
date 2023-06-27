@@ -12,9 +12,13 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING,
       allowNull: false,
     },
+    steam_id: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
     password: {
       type: Sequelize.TEXT,
-      allowNull: false,
+      allowNull: true,
     },
     avatar: {
       type: Sequelize.STRING,
@@ -39,6 +43,27 @@ module.exports = (sequelize, Sequelize) => {
       allowNull: false,
       defaultValue: false,
     },
+    profile_visibility: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      defaultValue: 1,
+    },
+    marketplace_ban_expires_at: {
+      type: Sequelize.DATE,
+      allowNull: true,
+    },
+    steam_api_key: {
+      type: Sequelize.STRING,
+      allowNull: true,
+    },
+    steam_trade_url: {
+      type: Sequelize.STRING,
+      allowNull: true,
+    },
+    last_track: {
+      type: Sequelize.DATE,
+      allowNull: true,
+    },
   }, {
     timestamps: true,
     createdAt: 'created_at',
@@ -46,13 +71,13 @@ module.exports = (sequelize, Sequelize) => {
     indexes: [
       {
         unique: true,
-        fields: ['username']
+        fields: ['steam_id']
       }
     ]
   });
   User.beforeCreate(async (user, options) => {
     try {
-      user.password = crypto.pbkdf2Sync(user.password, process.env.ENCRYPTION_SALT, 1000, 64, `sha512`).toString(`hex`);
+      if (user.password) user.password = crypto.pbkdf2Sync(user.password, process.env.ENCRYPTION_SALT, 1000, 64, `sha512`).toString(`hex`);
       user.role_id = process.env.DEFAULT_ROLE;
     } catch (err) {
       throw err;

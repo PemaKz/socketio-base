@@ -1,10 +1,27 @@
 {
+  "name": "socketio-boilerplate",
+  "version": "1.0.0",
+  "description": "SocketIO Boilerplate by Crame Studios",
+  "main": "index.js",
+  "author": "Crame Studios",
+  "license": "ISC",
   "dependencies": {
     "bullmq": "^3.12.0",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "gn-api-sdk-node": "^3.0.4",
     "mariadb": "^3.1.2",
+    "node-steam-openid": "^1.1.0",
     "redis": "^4.6.6",
     "sequelize": "^6.31.1",
     "socket.io": "^4.6.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js --ignore allRoutesPreview.json"
   }
 }

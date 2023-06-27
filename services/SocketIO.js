@@ -1,6 +1,7 @@
 const { Server } = require("socket.io");
 const routes = require("../routes");
 const middlewares = require("../middlewares");
+const eventsHandlers = require("../eventsHandlers");
 const SocketPort = process.env.PORT || 8080;
 
 /* Socket Server Setup */
@@ -10,7 +11,7 @@ const socketOptions = {
     //skipMiddlewares: true,
   },
   cors: {
-    origin: "http://localhost:3000"
+    origin: "*",
   }
 };
 const io = new Server(SocketPort, socketOptions);
@@ -19,6 +20,8 @@ const io = new Server(SocketPort, socketOptions);
 Object.keys(middlewares).forEach((middleware) => {
   io.use(middlewares[middleware]);
 });
+
+eventsHandlers(io);
 
 /* Socket Client Connect */
 io.on("connection", (socket) => {

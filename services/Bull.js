@@ -13,9 +13,9 @@ const connectionInfo = { connection : {
   }
 }}
 
-// const SampleQueu = new Queue('SampleQueu', connectionInfo);
+const WithdrawalQueu = new Queue('WithdrawalQueu', connectionInfo);
 
 module.exports = {
   connectionInfo,
-  // SampleQueu
+  WithdrawalQueu
 }

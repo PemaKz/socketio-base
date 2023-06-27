@@ -1,17 +1,25 @@
-const fs = require('fs');
-
-const allRoutes = fs.readdirSync(__dirname).filter(file => file !== 'index.js');
+const fs = require('fs/promises');
+const extractFilesFromDir = require('../scripts/extractFilesFromDir');
 
 let siteRoutes = {};
-allRoutes.forEach(route => {
-  siteRoutes[route.replace('.js', '')] = require(`./${route}`);
-});
+
+const loadRoutes = async () => {
+  const allRoutes = (await extractFilesFromDir(__dirname))
+    .filter(file => !file.endsWith('index'))
+    .sort((a, b) => a.localeCompare(b));
+  console.log('Routes: ', allRoutes);
+  await fs.writeFile(`allRoutesPreview.json`, JSON.stringify(allRoutes, null, 2));
+  allRoutes.forEach(subroute => {
+    siteRoutes[subroute] = require(`./${subroute}`);
+  });
+}
+
+loadRoutes();
 
 module.exports = async (io, socket, message) => {
   try{
     const { action, params } = JSON.parse(message);
     if(!action) throw new Error('Action not found');
-    //if(!params) throw new Error('Params not found');
     console.log(`Received from ${socket.id} | Action: ${action} | Params: ${params}`);
     if(!siteRoutes[action]) throw new Error('Action not found');
     try{
